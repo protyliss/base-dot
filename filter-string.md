@@ -12,12 +12,31 @@ String Expression for Multiple Conditional Filtering of Data
 
 ## Expression
 
+### `;` - And:
+
 ```regexp
-[TARGET]:[KEYWORD]([;/][TARGET]:[KEYWORD])*
+[CONDITION](;[CONDITION])*
 ```
 
-* Next Condition Starts with `;` - AND
-* Next Condition Starts with `/` - OR
+* foo:1;bar:2
+
+### `/` - Or:
+
+```regexp
+[CONDITION](/[CONDITION])*
+```
+
+* foo:1/bar:2
+
+``
+
+### CONDITION
+
+```regexp
+[TARGET]:[KEYWORD]
+```
+
+* foo:1
 
 ### TARGET
 
@@ -25,30 +44,84 @@ String Expression for Multiple Conditional Filtering of Data
 [_a-zA-Z][_a-zA-Z0-9]*
 ```
 
+* foo
+* bar1
+* _baz
+
 ### KEYWORD
 
 ```regexp
-!?'?[^,:;/]'?+([,:]!?'?[^,:;/]'?)*
+[^!',:*]+
 ```
 
-* Starts with: `!` - NOT
-* Next Keyword Starts with `,` - OR
-* Next Keyword Starts with `:` - AND
-* ` `(Space) Replace to `*`
+* foo
+* bar
 
-#### BETWEEN
+#### `!` - Not:
+
+```regexp
+![KEYWORD]
+```
+
+* !foo
+* !bar
+
+#### `''` - Strong Equal:
+
+```regexp
+'[KEYWORD]'
+```
+
+* 'foo'
+* 'bar'
+
+#### `'` - Starts with:
+
+```regexp
+'[KEYWORD]
+```
+
+* 'foo
+* 'bar
+
+#### `'` - Ends with:
+
+```regexp
+[KEYWORD]'
+```
+
+* foo'
+* bar'
+
+#### `,` - Or:
+
+```regexp
+[KEYWORD]+(,[KEYWORD])?
+```
+
+* foo,bar
+
+#### `:` - And:
+
+```regexp
+[KEYWORD]+(:[KEYWORD])?
+```
+
+* foo:bar
+
+#### `~` - BETWEEN
 
 ```regexp
 [KEYWORD]~[KEYWORD]
 ```
 
-#### GREATER THAN
+#### `~` - GREATER THAN
 
 ```regexp
 ~[KEYWORD]
 ```
 
-#### LESS_THEN
+#### `~` - LESS_THEN
 
 ```regexp
 [KEYWORD]~
@@ -121,3 +194,17 @@ SELECT *
 FROM TABLE
 WHERE foo like `1 2 3`
 ```
+
+---
+
+## Dynamic Input KEYWORD
+
+When keywords are entered by regular human, not a Developer. (Such as FORM)
+Using readable, meaningful words rather than operator symbols.
+
+If Keyword has Operator Symbols, will be escaped for to keep itself.
+
+* `foo OR bar` => `foo,bar` :
+* `foo AND bar` => `foo:bar`
+* `NOT foo` => `!foo` :
+* `!:;/,*` => `!!!:!;!/!,!*`
