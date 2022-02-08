@@ -1,9 +1,9 @@
-# Base of Dot
+# Base Dot
 
-Base Specification of Dot Programming to make the Line
+Base Specification for Series of Dot the Programming Library & Framework
 
 ## Expressions
 
-* [Timestamp Digit](timestamp-digit.md)
-* [Period String](period-string.md)
-* [Filter String](filter-string.md)
+* [Timestamp Expression](TIMESTAMP_EXPRESSION.md)
+  * [Period Expression](PERIOD_EXPRESSION.md)
+* [Filter Expression](FILTER_EXPRESSION.md)

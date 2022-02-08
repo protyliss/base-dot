@@ -1,5 +1,7 @@
 # Timestamp Digit
 
+> Specification Version 2.0
+
 Digit Expression for Timestamp and Timezone
 
 ## Expression
@@ -8,7 +10,24 @@ Digit Expression for Timestamp and Timezone
 [+-]?\d{4}\d{2}\d{2}(\d{2}(\d{2}(\d{2}(\d+)?)?)?)?(\.\d+)?
 ```
 
----
+* yyyymmdd
+* yyyymmddhh
+* yyyymmddhhii
+* yyyymmddhhiiss
+* yyyymmddhhiissu
+* yyyymmddhhiissuuu
+* yyyymmdd.z
+* yyyymmddhh.z
+* yyyymmddhhii.z
+* yyyymmddhhiiss.z
+* yyyymmddhhiissu.z
+* yyyymmddhhiissuuu.z
+* -yyyymmdd.z
+* -yyyymmddhh.z
+* -yyyymmddhhii.z
+* -yyyymmddhhiiss.z
+* -yyyymmddhhiissu.z
+* -yyyymmddhhiissuuu.z
 
 ## Examples
 
