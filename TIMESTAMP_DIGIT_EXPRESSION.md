@@ -10,18 +10,24 @@ Digit Expression for Timestamp and Timezone
 [+-]?\d{4}\d{2}\d{2}(\d{2}(\d{2}(\d{2}(\d+)?)?)?)?(\.\d+)?
 ```
 
+* yyyy
+* yyyymm
 * yyyymmdd
 * yyyymmddhh
 * yyyymmddhhii
 * yyyymmddhhiiss
 * yyyymmddhhiissu
 * yyyymmddhhiissuuu
+* yyyy.z
+* yyyymm.z
 * yyyymmdd.z
 * yyyymmddhh.z
 * yyyymmddhhii.z
 * yyyymmddhhiiss.z
 * yyyymmddhhiissu.z
 * yyyymmddhhiissuuu.z
+* -yyyy.z
+* -yyyymm.z
 * -yyyymmdd.z
 * -yyyymmddhh.z
 * -yyyymmddhhii.z
